@@ -4,8 +4,11 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :organisations, :memberships
 
-  devise :invitable, :confirmable, :database_authenticatable, :registerable, :recoverable,
+  devise :invitable, :confirmable, :registerable, :recoverable,
     :rememberable, :trackable, :timeoutable, :validatable, :lockable
+
+  devise :two_factor_authenticatable,
+         :otp_secret_encryption_key => ENV['DEVISE_2FA_KEY']
 
   validates :name, presence: true, on: :update
   validates :password, presence: true,
