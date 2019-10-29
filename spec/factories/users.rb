@@ -21,6 +21,12 @@ FactoryBot.define do
       end
     end
 
+    trait :super_admin_without_organisation do
+      otp_secret_key { 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' } # 2FA is set up
+
+      is_superadmin { true  }
+    end
+
     trait :unconfirmed do
       confirmed_at { nil }
     end
