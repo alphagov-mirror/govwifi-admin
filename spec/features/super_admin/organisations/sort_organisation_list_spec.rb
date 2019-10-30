@@ -7,7 +7,7 @@ describe 'Sorting the organisations list', type: :feature do
       create(:organisation, name: "Gov Org 3", created_at: '10 Feb 2014')
 
       sign_in_user super_admin
-      visit root_path
+      visit super_admin_organisations_path
     end
 
     context 'when sorting by account creation date' do

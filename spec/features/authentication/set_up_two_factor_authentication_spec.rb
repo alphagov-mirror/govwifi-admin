@@ -57,7 +57,7 @@ describe "Set up two factor authentication", type: :feature do
       end
 
       it "redirects the user to the admin app" do
-        expect(page).to have_current_path(super_admin_organisations_path)
+        expect(page).to have_current_path(super_admin_dashboard_index_path)
       end
     end
 
