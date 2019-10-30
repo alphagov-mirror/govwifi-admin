@@ -7,7 +7,8 @@ CustomOrganisationName.create(name: 'GovWifi Super Administrators')
 def create_user_for_organisations(
   organisations,
   email: nil,
-  confirmed_at: nil
+  confirmed_at: nil,
+  is_super_admin: false
 )
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -17,7 +18,8 @@ def create_user_for_organisations(
     password: "password",
     name: first_name + " " + last_name,
     confirmed_at:  confirmed_at,
-    organisations: organisations
+    organisations: organisations,
+    is_super_admin: is_super_admin
   )
 end
 
@@ -34,7 +36,15 @@ empty_organisation = Organisation.create(
 create_user_for_organisations(
   [super_admin_organisation],
   email: 'admin@gov.uk',
-  confirmed_at: Time.zone.now
+  confirmed_at: Time.zone.now,
+  is_super_admin: true
+)
+
+create_user_for_organisations(
+  [],
+  email: 'lone.admin@gov.uk',
+  confirmed_at: Time.zone.now,
+  is_super_admin: true
 )
 
 create_user_for_organisations(

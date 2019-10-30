@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   has_one_time_password(encrypted: true)
 
-  attr_accessor :is_super_admin
-
   validates :name, presence: true, on: :update
   validates :password, presence: true,
     length: { within: 6..80 },
@@ -50,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def super_admin?
-    membership_for(Organisation.super_admins) != nil
+    membership_for(Organisation.super_admins) != nil || is_super_admin
   end
 
   def need_two_factor_authentication?(request)
