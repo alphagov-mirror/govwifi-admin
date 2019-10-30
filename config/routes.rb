@@ -88,6 +88,7 @@ Rails.application.routes.draw do
         resources :organisation_names, only: %i[index create destroy]
       end
     end
+    resources :dashboard, only: %i[index]
 
     post 'wifi_user_search', to: 'wifi_user_search#search'
   end

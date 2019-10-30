@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one_time_password(encrypted: true)
 
+  attr_accessor :is_super_admin
+
   validates :name, presence: true, on: :update
   validates :password, presence: true,
     length: { within: 6..80 },
