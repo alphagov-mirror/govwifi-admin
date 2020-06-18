@@ -13,8 +13,11 @@ const getSuggestionHtml = suggestions => {
 };
 
 const getScoreHtml = score => {
-  const scoreText = score < 2 ? 'weak' : (score < 4 ? 'medium' : 'good');
-  return `Password strength: <span class="password-strength-score">${scoreText}</span>`;
+  const scoreClassification = score < 2 ? 'weak' : (score < 4 ? 'medium' : 'good');
+  return `
+    Password strength:
+    <span class="password-strength-score score-${scoreClassification}">${scoreClassification}</span>
+  `;
 };
 
 const updateScore = score => $('.password-strength').html(getScoreHtml(score));
