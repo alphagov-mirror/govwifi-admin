@@ -37,7 +37,7 @@ group :test do
   gem "rack_session_access"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 4"
-  gem "rubocop-govuk"
+  gem "rubocop-govuk", "=3.6.0"
   gem "shoulda-matchers", "~> 4.4"
   gem "simplecov", require: false
   gem "simplecov-console", require: false
